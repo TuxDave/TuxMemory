@@ -1,0 +1,181 @@
+[gd_scene load_steps=14 format=2]
+
+[ext_resource path="res://scene/principale/game.gd" type="Script" id=1]
+[ext_resource path="res://scene/Tileset/tileset.res" type="TileSet" id=2]
+[ext_resource path="res://img/backcover.png" type="Texture" id=3]
+[ext_resource path="res://img/down.png" type="Texture" id=4]
+[ext_resource path="res://img/left.png" type="Texture" id=5]
+[ext_resource path="res://img/right.png" type="Texture" id=6]
+[ext_resource path="res://img/up.png" type="Texture" id=7]
+[ext_resource path="res://img/ui-area.png" type="Texture" id=8]
+[ext_resource path="res://scene/principale/scrumble.gd" type="Script" id=9]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 3 ) ],
+"loop": true,
+"name": "back",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 4 ) ],
+"loop": true,
+"name": "show",
+"speed": 5.0
+} ]
+
+[sub_resource type="SpriteFrames" id=2]
+animations = [ {
+"frames": [ ExtResource( 3 ) ],
+"loop": true,
+"name": "back",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 5 ) ],
+"loop": true,
+"name": "show",
+"speed": 5.0
+} ]
+
+[sub_resource type="SpriteFrames" id=3]
+animations = [ {
+"frames": [ ExtResource( 3 ) ],
+"loop": true,
+"name": "back",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 6 ) ],
+"loop": true,
+"name": "show",
+"speed": 5.0
+} ]
+
+[sub_resource type="SpriteFrames" id=4]
+animations = [ {
+"frames": [ ExtResource( 3 ) ],
+"loop": true,
+"name": "back",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 7 ) ],
+"loop": true,
+"name": "show",
+"speed": 5.0
+} ]
+
+[node name="game" type="Node2D"]
+script = ExtResource( 1 )
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = ExtResource( 2 )
+format = 1
+tile_data = PoolIntArray( 0, 0, 0, 2, 0, 0 )
+
+[node name="down" type="AnimatedSprite" parent="." groups=[
+"down",
+]]
+position = Vector2( 360.648, -53.4447 )
+frames = SubResource( 1 )
+animation = "back"
+
+[node name="down2" type="AnimatedSprite" parent="." groups=[
+"down",
+]]
+position = Vector2( 360.648, -53.4447 )
+frames = SubResource( 1 )
+animation = "back"
+
+[node name="left" type="AnimatedSprite" parent="." groups=[
+"left",
+]]
+position = Vector2( 265.369, -53.0737 )
+frames = SubResource( 2 )
+animation = "back"
+
+[node name="left2" type="AnimatedSprite" parent="." groups=[
+"left",
+]]
+position = Vector2( 265.369, -53.0737 )
+frames = SubResource( 2 )
+animation = "back"
+
+[node name="right" type="AnimatedSprite" parent="." groups=[
+"right",
+]]
+position = Vector2( 174.585, -53.7721 )
+frames = SubResource( 3 )
+animation = "back"
+
+[node name="right2" type="AnimatedSprite" parent="." groups=[
+"right",
+]]
+position = Vector2( 174.585, -53.7721 )
+frames = SubResource( 3 )
+animation = "back"
+
+[node name="up" type="AnimatedSprite" parent="." groups=[
+"up",
+]]
+position = Vector2( 87.2923, -46.0903 )
+frames = SubResource( 4 )
+animation = "back"
+
+[node name="up2" type="AnimatedSprite" parent="." groups=[
+"up",
+]]
+position = Vector2( 87.2923, -46.0903 )
+frames = SubResource( 4 )
+animation = "back"
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="NinePatchRect" type="NinePatchRect" parent="CanvasLayer"]
+margin_left = 603.0
+margin_top = 7.0
+margin_right = 722.0
+margin_bottom = 164.0
+texture = ExtResource( 8 )
+region_rect = Rect2( 2, 2, 28, 28 )
+patch_margin_left = 24
+patch_margin_top = 4
+patch_margin_right = 25
+patch_margin_bottom = 3
+
+[node name="time" type="Label" parent="CanvasLayer"]
+margin_left = 607.0
+margin_top = 23.0
+margin_right = 718.0
+margin_bottom = 57.0
+text = "Time:
+00:00:00"
+align = 1
+valign = 1
+
+[node name="record" type="Label" parent="CanvasLayer"]
+margin_left = 607.0
+margin_top = 63.0
+margin_right = 718.0
+margin_bottom = 97.0
+text = "Record:
+00:00:00"
+align = 1
+valign = 1
+
+[node name="start" type="Button" parent="CanvasLayer"]
+margin_left = 609.0
+margin_top = 112.795
+margin_right = 716.0
+margin_bottom = 132.795
+text = "START"
+
+[node name="scrumble" type="Button" parent="CanvasLayer"]
+margin_left = 609.0
+margin_top = 137.06
+margin_right = 716.0
+margin_bottom = 157.06
+text = "SCRUMBLE"
+script = ExtResource( 9 )
+
+[node name="Timer" type="Timer" parent="CanvasLayer/scrumble"]
+wait_time = 2.0
+one_shot = true
+[connection signal="scrumble" from="CanvasLayer/scrumble" to="." method="_on_scrumble_scrumble"]
