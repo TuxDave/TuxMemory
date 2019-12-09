@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://scene/principale/game.gd" type="Script" id=1]
 [ext_resource path="res://scene/Tileset/tileset.res" type="TileSet" id=2]
@@ -10,58 +10,6 @@
 [ext_resource path="res://img/ui-area.png" type="Texture" id=8]
 [ext_resource path="res://scene/principale/scrumble.gd" type="Script" id=9]
 
-[sub_resource type="SpriteFrames" id=1]
-animations = [ {
-"frames": [ ExtResource( 3 ) ],
-"loop": true,
-"name": "back",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 4 ) ],
-"loop": true,
-"name": "show",
-"speed": 5.0
-} ]
-
-[sub_resource type="SpriteFrames" id=2]
-animations = [ {
-"frames": [ ExtResource( 3 ) ],
-"loop": true,
-"name": "back",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 5 ) ],
-"loop": true,
-"name": "show",
-"speed": 5.0
-} ]
-
-[sub_resource type="SpriteFrames" id=3]
-animations = [ {
-"frames": [ ExtResource( 3 ) ],
-"loop": true,
-"name": "back",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 6 ) ],
-"loop": true,
-"name": "show",
-"speed": 5.0
-} ]
-
-[sub_resource type="SpriteFrames" id=4]
-animations = [ {
-"frames": [ ExtResource( 3 ) ],
-"loop": true,
-"name": "back",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 7 ) ],
-"loop": true,
-"name": "show",
-"speed": 5.0
-} ]
-
 [node name="game" type="Node2D"]
 script = ExtResource( 1 )
 
@@ -70,61 +18,85 @@ tile_set = ExtResource( 2 )
 format = 1
 tile_data = PoolIntArray( 0, 0, 0, 2, 0, 0 )
 
-[node name="down" type="AnimatedSprite" parent="." groups=[
+[node name="down" type="TextureButton" parent="." groups=[
 "down",
 ]]
-position = Vector2( 360.648, -53.4447 )
-frames = SubResource( 1 )
-animation = "back"
+margin_left = 30.5496
+margin_top = -80.2505
+margin_right = 94.5496
+margin_bottom = -16.2505
+texture_normal = ExtResource( 3 )
+texture_disabled = ExtResource( 4 )
 
-[node name="down2" type="AnimatedSprite" parent="." groups=[
+[node name="down2" type="TextureButton" parent="." groups=[
 "down",
 ]]
-position = Vector2( 360.648, -53.4447 )
-frames = SubResource( 1 )
-animation = "back"
+margin_left = 31.3941
+margin_top = -163.669
+margin_right = 95.3941
+margin_bottom = -99.6691
+texture_normal = ExtResource( 3 )
+texture_disabled = ExtResource( 4 )
 
-[node name="left" type="AnimatedSprite" parent="." groups=[
+[node name="left" type="TextureButton" parent="." groups=[
 "left",
 ]]
-position = Vector2( 265.369, -53.0737 )
-frames = SubResource( 2 )
-animation = "back"
+margin_left = 148.489
+margin_top = -85.2708
+margin_right = 212.489
+margin_bottom = -21.2708
+texture_normal = ExtResource( 3 )
+texture_disabled = ExtResource( 5 )
 
-[node name="left2" type="AnimatedSprite" parent="." groups=[
+[node name="left2" type="TextureButton" parent="." groups=[
 "left",
 ]]
-position = Vector2( 265.369, -53.0737 )
-frames = SubResource( 2 )
-animation = "back"
+margin_left = 143.739
+margin_top = -158.421
+margin_right = 207.739
+margin_bottom = -94.4209
+texture_normal = ExtResource( 3 )
+texture_disabled = ExtResource( 5 )
 
-[node name="right" type="AnimatedSprite" parent="." groups=[
+[node name="right" type="TextureButton" parent="." groups=[
 "right",
 ]]
-position = Vector2( 174.585, -53.7721 )
-frames = SubResource( 3 )
-animation = "back"
+margin_left = 264.634
+margin_top = -86.741
+margin_right = 328.634
+margin_bottom = -22.741
+texture_normal = ExtResource( 3 )
+texture_disabled = ExtResource( 6 )
 
-[node name="right2" type="AnimatedSprite" parent="." groups=[
+[node name="right2" type="TextureButton" parent="." groups=[
 "right",
 ]]
-position = Vector2( 174.585, -53.7721 )
-frames = SubResource( 3 )
-animation = "back"
+margin_left = 264.634
+margin_top = -169.391
+margin_right = 328.634
+margin_bottom = -105.391
+texture_normal = ExtResource( 3 )
+texture_disabled = ExtResource( 6 )
 
-[node name="up" type="AnimatedSprite" parent="." groups=[
+[node name="up" type="TextureButton" parent="." groups=[
 "up",
 ]]
-position = Vector2( 87.2923, -46.0903 )
-frames = SubResource( 4 )
-animation = "back"
+margin_left = 397.685
+margin_top = -86.741
+margin_right = 461.685
+margin_bottom = -22.741
+texture_normal = ExtResource( 3 )
+texture_disabled = ExtResource( 7 )
 
-[node name="up2" type="AnimatedSprite" parent="." groups=[
+[node name="up2" type="TextureButton" parent="." groups=[
 "up",
 ]]
-position = Vector2( 87.2923, -46.0903 )
-frames = SubResource( 4 )
-animation = "back"
+margin_left = 395.785
+margin_top = -166.541
+margin_right = 459.785
+margin_bottom = -102.541
+texture_normal = ExtResource( 3 )
+texture_disabled = ExtResource( 7 )
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -176,6 +148,10 @@ text = "SCRUMBLE"
 script = ExtResource( 9 )
 
 [node name="Timer" type="Timer" parent="CanvasLayer/scrumble"]
+wait_time = 2.0
+one_shot = true
+
+[node name="Timer" type="Timer" parent="CanvasLayer"]
 wait_time = 2.0
 one_shot = true
 [connection signal="scrumble" from="CanvasLayer/scrumble" to="." method="_on_scrumble_scrumble"]
