@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://scene/principale/game.gd" type="Script" id=1]
 [ext_resource path="res://scene/Tileset/tileset.res" type="TileSet" id=2]
@@ -7,8 +7,13 @@
 [ext_resource path="res://img/left.png" type="Texture" id=5]
 [ext_resource path="res://img/right.png" type="Texture" id=6]
 [ext_resource path="res://img/up.png" type="Texture" id=7]
-[ext_resource path="res://img/ui-area.png" type="Texture" id=8]
-[ext_resource path="res://scene/principale/scrumble.gd" type="Script" id=9]
+[ext_resource path="res://scene/principale/Ubuntu-Bold.ttf" type="DynamicFontData" id=8]
+[ext_resource path="res://img/ui-area.png" type="Texture" id=9]
+[ext_resource path="res://scene/principale/scrumble.gd" type="Script" id=10]
+
+[sub_resource type="DynamicFont" id=1]
+size = 200
+font_data = ExtResource( 8 )
 
 [node name="game" type="Node2D"]
 script = ExtResource( 1 )
@@ -98,21 +103,34 @@ margin_bottom = -102.541
 texture_normal = ExtResource( 3 )
 texture_disabled = ExtResource( 7 )
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
+[node name="winLabel" type="Label" parent="."]
+visible = false
+margin_right = 725.0
+margin_bottom = 300.0
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 0.968627, 1, 0, 1 )
+text = "WIN!!!"
+align = 1
+valign = 1
+autowrap = true
+clip_text = true
+uppercase = true
 
-[node name="NinePatchRect" type="NinePatchRect" parent="CanvasLayer"]
+[node name="NinePatchRect" type="NinePatchRect" parent="."]
+visible = false
 margin_left = 603.0
 margin_top = 7.0
 margin_right = 722.0
 margin_bottom = 164.0
-texture = ExtResource( 8 )
+texture = ExtResource( 9 )
 region_rect = Rect2( 2, 2, 28, 28 )
 patch_margin_left = 24
 patch_margin_top = 4
 patch_margin_right = 25
 patch_margin_bottom = 3
 
-[node name="time" type="Label" parent="CanvasLayer"]
+[node name="time" type="Label" parent="."]
+visible = false
 margin_left = 607.0
 margin_top = 23.0
 margin_right = 718.0
@@ -122,7 +140,8 @@ text = "Time:
 align = 1
 valign = 1
 
-[node name="record" type="Label" parent="CanvasLayer"]
+[node name="record" type="Label" parent="."]
+visible = false
 margin_left = 607.0
 margin_top = 63.0
 margin_right = 718.0
@@ -132,26 +151,24 @@ text = "Record:
 align = 1
 valign = 1
 
-[node name="start" type="Button" parent="CanvasLayer"]
+[node name="start" type="Button" parent="."]
+visible = false
 margin_left = 609.0
 margin_top = 112.795
 margin_right = 716.0
 margin_bottom = 132.795
 text = "START"
 
-[node name="scrumble" type="Button" parent="CanvasLayer"]
+[node name="scrumble" type="Button" parent="."]
+visible = false
 margin_left = 609.0
 margin_top = 137.06
 margin_right = 716.0
 margin_bottom = 157.06
 text = "SCRUMBLE"
-script = ExtResource( 9 )
+script = ExtResource( 10 )
 
-[node name="Timer" type="Timer" parent="CanvasLayer/scrumble"]
+[node name="Timer" type="Timer" parent="scrumble"]
 wait_time = 2.0
 one_shot = true
-
-[node name="Timer" type="Timer" parent="CanvasLayer"]
-wait_time = 2.0
-one_shot = true
-[connection signal="scrumble" from="CanvasLayer/scrumble" to="." method="_on_scrumble_scrumble"]
+[connection signal="scrumble" from="scrumble" to="." method="_on_scrumble_scrumble"]

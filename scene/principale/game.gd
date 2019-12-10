@@ -7,6 +7,7 @@ var i = 0
 var time = 0
 var disabled = 0
 var faces = []
+var win = 0
 
 func _ready():
 	scrumble()
@@ -47,8 +48,13 @@ func _process(delta):
 	if disabled == 2:
 		if faces[0] == faces[1]:
 			disabled = 0
+			faces = []
+			win += 1
 		elif faces[0] != faces[1]:
 			disabled = 0
+			faces = []
+			win = 0
+			yield(get_tree().create_timer(1.0), "timeout")
 			$down.set_disabled(false)
 			$down2.set_disabled(false)
 			$up.set_disabled(false)
@@ -57,6 +63,21 @@ func _process(delta):
 			$right2.set_disabled(false)
 			$left.set_disabled(false)
 			$left2.set_disabled(false)
+	if win == 4:
+		$winLabel.show()
+		$down.hide()
+		$down2.hide()
+		$up.hide()
+		$up2.hide()
+		$left.hide()
+		$left2.hide()
+		$right.hide()
+		$right2.hide()
+		$NinePatchRect.hide()
+		$time.hide()
+		$record.hide()
+		$start.hide()
+		$scrumble.hide()
 
 func _on_scrumble_scrumble():
 	changeTime()
@@ -97,3 +118,11 @@ func scrumble():
 	$right2.rect_position = posizioni2[5]
 	$left.rect_position = posizioni2[6]
 	$left2.rect_position = posizioni2[7]
+	$down.set_disabled(false)
+	$down2.set_disabled(false)
+	$up.set_disabled(false)
+	$up2.set_disabled(false)
+	$right.set_disabled(false)
+	$right2.set_disabled(false)
+	$left.set_disabled(false)
+	$left2.set_disabled(false)
