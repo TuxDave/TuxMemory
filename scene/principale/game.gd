@@ -150,6 +150,7 @@ func scrumble():
 	$left2.set_disabled(false)
 
 func _on_start_button_up():
+	scrumble()
 	timeStart = OS.get_time()
 	timeStart = timeStart["hour"] * 3600 + timeStart["minute"] * 60 + timeStart["second"]
 	timeActive = true
